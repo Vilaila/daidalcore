@@ -13,7 +13,7 @@ export default function DashboardPage() {
   const dineroDisponible = eventosEconomicos.reduce((s, e) => s + e.presupuestoDisponible, 0);
   const dineroEventos = eventosEconomicos.filter(e => e.estado === "En progreso").reduce((s, e) => s + e.presupuestoDisponible, 0);
   const totalPedidos = pedidos.length;
-  const pedidosEstancados = pedidos.filter(p => p.estado === "Proforma");
+  const pedidosEstancados = pedidos.filter(p => p.estadoPedido === "Proforma");
   const presupuestosAlta = presupuestos.filter(p => p.prioridad === "Alta" && p.estado === "Pendiente");
 
   // Data by section
@@ -25,11 +25,11 @@ export default function DashboardPage() {
   }));
 
   const estadoPedidos = [
-    { name: "Pendiente", value: pedidos.filter(p => p.estado === "Pendiente de correo").length },
-    { name: "Proforma", value: pedidos.filter(p => p.estado === "Proforma").length },
-    { name: "En curso", value: pedidos.filter(p => p.estado === "Solicitud empezada").length },
-    { name: "Factura", value: pedidos.filter(p => p.estado === "Factura").length },
-    { name: "Terminado", value: pedidos.filter(p => p.estado === "Terminado").length },
+    { name: "Pendiente", value: pedidos.filter(p => p.estadoPedido === "Pendiente de correo").length },
+    { name: "Proforma", value: pedidos.filter(p => p.estadoPedido === "Proforma").length },
+    { name: "En curso", value: pedidos.filter(p => p.estadoPedido === "Solicitud empezada").length },
+    { name: "Factura", value: pedidos.filter(p => p.estadoPedido === "Factura").length },
+    { name: "Terminado", value: pedidos.filter(p => p.estadoPedido === "Terminado").length },
   ].filter(d => d.value > 0);
 
   const COLORS = [

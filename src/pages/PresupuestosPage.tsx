@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { presupuestos } from "@/data/mockData";
+import { presupuestos, eventosEconomicos } from "@/data/mockData";
 import { useRole } from "@/contexts/RoleContext";
-import { Download, Upload, AlertTriangle } from "lucide-react";
+import { Download, Upload, AlertTriangle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 export default function PresupuestosPage() {
   const { canWrite } = useRole();
@@ -19,6 +18,11 @@ export default function PresupuestosPage() {
     if (e === "Aprobado") return "bg-pastel-green text-secondary-foreground";
     if (e === "Rechazado") return "bg-pastel-red text-accent-foreground";
     return "bg-muted text-muted-foreground";
+  };
+
+  const getEventoNombre = (id: string) => {
+    const evento = eventosEconomicos.find(e => e.id === id);
+    return evento ? evento.nombre : "—";
   };
 
   return (
@@ -42,11 +46,14 @@ export default function PresupuestosPage() {
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground">Nombre</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden md:table-cell">Sección</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden lg:table-cell">Empresa</th>
+              <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden lg:table-cell">Referencia</th>
               <th className="text-right px-4 py-3 font-semibold text-muted-foreground">Uds</th>
               <th className="text-right px-4 py-3 font-semibold text-muted-foreground">P.Unit</th>
               <th className="text-right px-4 py-3 font-semibold text-muted-foreground">Total</th>
               <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Prioridad</th>
               <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Estado</th>
+              <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden xl:table-cell">Evento Económico</th>
+              <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden xl:table-cell">Fecha</th>
             </tr>
           </thead>
           <tbody>
@@ -58,13 +65,21 @@ export default function PresupuestosPage() {
                       <AlertTriangle className="w-4 h-4 text-destructive flex-shrink-0" />
                     )}
                     <div>
-                      <p className="font-medium text-foreground">{p.nombre}</p>
+                      <div className="flex items-center gap-1">
+                        <p className="font-medium text-foreground">{p.nombre}</p>
+                        {p.enlace && (
+                          <a href={p.enlace} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
+                      </div>
                       <p className="text-xs text-muted-foreground">{p.descripcion}</p>
                     </div>
                   </div>
                 </td>
                 <td className="px-4 py-3 text-muted-foreground hidden md:table-cell">{p.seccion}</td>
                 <td className="px-4 py-3 text-muted-foreground hidden lg:table-cell">{p.empresa}</td>
+                <td className="px-4 py-3 text-muted-foreground hidden lg:table-cell font-mono text-xs">{p.referencia}</td>
                 <td className="px-4 py-3 text-right text-foreground">{p.unidades}</td>
                 <td className="px-4 py-3 text-right text-foreground">{p.precioUnitario.toFixed(2)} €</td>
                 <td className="px-4 py-3 text-right font-semibold text-foreground">{(p.unidades * p.precioUnitario).toFixed(2)} €</td>
@@ -74,6 +89,8 @@ export default function PresupuestosPage() {
                 <td className="px-4 py-3 text-center">
                   <span className={`status-badge ${estadoColor(p.estado)}`}>{p.estado}</span>
                 </td>
+                <td className="px-4 py-3 text-muted-foreground hidden xl:table-cell text-xs">{getEventoNombre(p.eventoEconomico)}</td>
+                <td className="px-4 py-3 text-muted-foreground hidden xl:table-cell text-xs">{p.fecha}</td>
               </tr>
             ))}
           </tbody>
