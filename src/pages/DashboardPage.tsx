@@ -26,7 +26,7 @@ const YELLOW_SOFT = "hsl(45, 95%, 92%)";
 const PINK_SOFT = "hsl(345, 90%, 92%)";
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
-const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } } };
+const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" as const } } };
 
 // ─── Computed data ───────────────────────────────────────────────────
 
