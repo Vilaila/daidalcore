@@ -35,8 +35,8 @@ export default function LoginPage() {
 
     // Check if MFA is enrolled
     const { data: factors } = await supabase.auth.mfa.listFactors();
-    const verifiedTotp = factors?.totp?.find(f => f.status === "verified");
-    const unverifiedTotp = factors?.totp?.find(f => f.status === "unverified");
+    const verifiedTotp = factors?.totp?.find(f => (f.status as string) === "verified");
+    const unverifiedTotp = factors?.totp?.find(f => (f.status as string) === "unverified");
 
     if (verifiedTotp) {
       // User has verified TOTP — challenge it
