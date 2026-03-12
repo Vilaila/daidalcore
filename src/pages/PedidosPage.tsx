@@ -130,8 +130,8 @@ export default function PedidosPage() {
                 <td className="px-4 py-3 text-right font-semibold text-foreground">{p.precioTotal.toFixed(2)} €</td>
                 <td className="px-4 py-3 text-center">
                   <span className={`status-badge ${
-                    p.estadoPedido === "Terminado" ? "bg-pastel-green text-secondary-foreground" :
-                    p.estadoPedido === "Proforma" ? "bg-pastel-yellow" :
+                    p.estadoPedido === "Terminado" ? "bg-brand-teal-soft text-[hsl(166,40%,25%)]" :
+                    p.estadoPedido === "Proforma" ? "bg-brand-yellow-soft text-[hsl(35,80%,25%)]" :
                     "bg-muted text-muted-foreground"
                   }`}>{p.estadoPedido}</span>
                 </td>
