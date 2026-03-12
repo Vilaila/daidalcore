@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { pedidos, presupuestos, eventosEconomicos } from "@/data/mockData";
 import { useRole } from "@/contexts/RoleContext";
 import { Button } from "@/components/ui/button";
-import { FileText, Clock, ExternalLink, Package } from "lucide-react";
+import { FileText, Clock, ExternalLink, Package, Pencil, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 const STEPS = ["Pendiente de correo", "Proforma", "Solicitud empezada", "Factura", "Terminado"];
