@@ -4,7 +4,7 @@ import { eventosEconomicos, EventoEconomico } from "@/data/mockData";
 import { useRole } from "@/contexts/RoleContext";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Edit2, ChevronDown, ChevronUp } from "lucide-react";
+import { Edit2, ChevronDown, ChevronUp, Trash2 } from "lucide-react";
 
 type FilterType = "todos" | "en_progreso" | "sin_comenzar" | "terminados";
 
