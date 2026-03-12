@@ -25,11 +25,11 @@ export default function DashboardPage() {
   }));
 
   const estadoPedidos = [
-    { name: "Pendiente", value: pedidos.filter(p => p.estado === "Pendiente de correo").length },
-    { name: "Proforma", value: pedidos.filter(p => p.estado === "Proforma").length },
-    { name: "En curso", value: pedidos.filter(p => p.estado === "Solicitud empezada").length },
-    { name: "Factura", value: pedidos.filter(p => p.estado === "Factura").length },
-    { name: "Terminado", value: pedidos.filter(p => p.estado === "Terminado").length },
+    { name: "Pendiente", value: pedidos.filter(p => p.estadoPedido === "Pendiente de correo").length },
+    { name: "Proforma", value: pedidos.filter(p => p.estadoPedido === "Proforma").length },
+    { name: "En curso", value: pedidos.filter(p => p.estadoPedido === "Solicitud empezada").length },
+    { name: "Factura", value: pedidos.filter(p => p.estadoPedido === "Factura").length },
+    { name: "Terminado", value: pedidos.filter(p => p.estadoPedido === "Terminado").length },
   ].filter(d => d.value > 0);
 
   const COLORS = [
