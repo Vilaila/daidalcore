@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { colaboradores } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
 import {
-  Mail, Phone, FileText, ExternalLink, Calendar, ChevronDown, ChevronUp, Handshake
+  Mail, Phone, FileText, ExternalLink, Calendar, ChevronDown, ChevronUp, Handshake, Pencil, Trash2
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useRole } from "@/contexts/RoleContext";
