@@ -29,7 +29,7 @@ function estatusColor(e: string) {
 export default function MiembrosPage() {
   const { canWrite, role } = useRole();
   const writable = canWrite("config");
-  const canFilter = role === "Presidente" || role === "Coordinador de Sección";
+  const canFilter = role === "presidente" || role === "coordinador_seccion";
 
   const [search, setSearch] = useState("");
   const [filterRol, setFilterRol] = useState<string>("all");
