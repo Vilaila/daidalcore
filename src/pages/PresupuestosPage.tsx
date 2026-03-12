@@ -54,6 +54,7 @@ export default function PresupuestosPage() {
               <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Estado</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden xl:table-cell">Evento Económico</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden xl:table-cell">Fecha</th>
+              {writable && <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Acciones</th>}
             </tr>
           </thead>
           <tbody>
