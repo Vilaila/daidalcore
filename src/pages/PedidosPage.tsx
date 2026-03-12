@@ -51,8 +51,8 @@ export default function PedidosPage() {
     ids.map(id => eventosEconomicos.find(e => e.id === id)?.nombre).filter(Boolean).join(", ") || "—";
 
   const envioColor = (e: string) => {
-    if (e === "Recibido") return "bg-pastel-green text-secondary-foreground";
-    if (e === "En tránsito" || e === "Enviado") return "bg-pastel-yellow";
+    if (e === "Recibido") return "bg-brand-teal-soft text-[hsl(166,40%,25%)]";
+    if (e === "En tránsito" || e === "Enviado") return "bg-brand-yellow-soft text-[hsl(35,80%,25%)]";
     return "bg-muted text-muted-foreground";
   };
 
