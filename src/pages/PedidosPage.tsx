@@ -68,7 +68,7 @@ export default function PedidosPage() {
 
       {/* Alerta pedidos estancados */}
       {pedidos.filter(p => p.estadoPedido === "Proforma").map(p => (
-        <div key={p.id} className="flex items-center gap-3 bg-pastel-yellow rounded-lg px-4 py-3 text-sm">
+        <div key={p.id} className="flex items-center gap-3 bg-brand-yellow-soft rounded-lg px-4 py-3 text-sm">
           <Clock className="w-4 h-4 flex-shrink-0" style={{ color: "hsl(35, 95%, 45%)" }} />
           <span><strong>Alerta:</strong> Pedido a "{p.empresa}" estancado en Proforma</span>
         </div>
