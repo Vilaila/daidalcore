@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { presupuestos, eventosEconomicos, pedidos, inventario } from "@/data/mockData";
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart as RePieChart, Pie, Cell, BarChart, Bar, RadialBarChart, RadialBar, Legend,
 } from "recharts";
 import { Progress } from "@/components/ui/progress";
