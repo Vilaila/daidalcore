@@ -92,6 +92,18 @@ export default function PresupuestosPage() {
                 </td>
                 <td className="px-4 py-3 text-muted-foreground hidden xl:table-cell text-xs">{getEventoNombre(p.eventoEconomico)}</td>
                 <td className="px-4 py-3 text-muted-foreground hidden xl:table-cell text-xs">{p.fecha}</td>
+                {writable && (
+                  <td className="px-4 py-3 text-center">
+                    <div className="flex items-center justify-center gap-1">
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-primary">
+                        <Pencil className="w-3.5 h-3.5" />
+                      </Button>
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-destructive">
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </Button>
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

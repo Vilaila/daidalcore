@@ -164,6 +164,18 @@ export default function PedidosPage() {
                 <td className="px-4 py-3 text-center">
                   <Button variant="ghost" size="sm" onClick={() => setSelected(p.id)}>Ver</Button>
                 </td>
+                {writable && (
+                  <td className="px-4 py-3 text-center">
+                    <div className="flex items-center justify-center gap-1">
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-primary">
+                        <Pencil className="w-3.5 h-3.5" />
+                      </Button>
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-destructive">
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </Button>
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
