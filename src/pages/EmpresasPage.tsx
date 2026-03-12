@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Star, Search, Globe, Phone, Mail, FileText, ExternalLink,
-  ChevronDown, ChevronUp, Building2, Calendar
+  ChevronDown, ChevronUp, Building2, Calendar, Pencil, Trash2
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useRole } from "@/contexts/RoleContext";
