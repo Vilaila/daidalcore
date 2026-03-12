@@ -35,21 +35,35 @@ export default function LoginPage() {
 
     // Check if MFA is enrolled
     const { data: factors } = await supabase.auth.mfa.listFactors();
-    const totp = factors?.totp?.[0];
+    const verifiedTotp = factors?.totp?.find(f => f.status === "verified");
+    const unverifiedTotp = factors?.totp?.find(f => f.status === "unverified");
 
-    if (totp) {
-      // User has TOTP set up — challenge it
-      const { data: challenge, error: challengeErr } = await supabase.auth.mfa.challenge({ factorId: totp.id });
+    if (verifiedTotp) {
+      // User has verified TOTP — challenge it
+      const { data: challenge, error: challengeErr } = await supabase.auth.mfa.challenge({ factorId: verifiedTotp.id });
       if (challengeErr) {
         toast.error("Error MFA", { description: challengeErr.message });
         setLoading(false);
         return;
       }
-      setFactorId(totp.id);
+      setFactorId(verifiedTotp.id);
       setChallengeId(challenge.id);
       setStep("2fa-verify");
+    } else if (unverifiedTotp) {
+      // Has an unverified factor — unenroll it and create a fresh one
+      await supabase.auth.mfa.unenroll({ factorId: unverifiedTotp.id });
+      const { data: enroll, error: enrollErr } = await supabase.auth.mfa.enroll({ factorType: "totp", friendlyName: "DaidalCore" });
+      if (enrollErr) {
+        toast.error("Error configurando 2FA", { description: enrollErr.message });
+        setLoading(false);
+        return;
+      }
+      setTotpUri(enroll.totp.uri);
+      setTotpQr(enroll.totp.qr_code);
+      setFactorId(enroll.id);
+      setStep("2fa-setup");
     } else {
-      // No MFA — prompt setup
+      // No MFA at all — enroll new
       const { data: enroll, error: enrollErr } = await supabase.auth.mfa.enroll({ factorType: "totp", friendlyName: "DaidalCore" });
       if (enrollErr) {
         toast.error("Error configurando 2FA", { description: enrollErr.message });
