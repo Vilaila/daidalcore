@@ -119,6 +119,7 @@ export default function PedidosPage() {
               <th className="text-center px-4 py-3 font-semibold text-muted-foreground hidden lg:table-cell">Factura</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden xl:table-cell">Fecha</th>
               <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Detalle</th>
+              {writable && <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Acciones</th>}
             </tr>
           </thead>
           <tbody>
