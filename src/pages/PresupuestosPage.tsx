@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { presupuestos, eventosEconomicos } from "@/data/mockData";
 import { useRole } from "@/contexts/RoleContext";
-import { Download, Upload, AlertTriangle, ExternalLink } from "lucide-react";
+import { Download, Upload, AlertTriangle, ExternalLink, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function PresupuestosPage() {
