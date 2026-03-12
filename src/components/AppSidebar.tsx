@@ -8,8 +8,10 @@ import {
   Users,
   UserCircle,
   Settings,
+  LogOut,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
+import { useAuth } from "@/contexts/AuthContext";
 import { useLocation } from "react-router-dom";
 import {
   Sidebar,
@@ -45,6 +47,7 @@ export function AppSidebar() {
   const collapsed = state === "collapsed";
   const location = useLocation();
   const { role } = useRole();
+  const { signOut, user } = useAuth();
 
   return (
     <Sidebar collapsible="icon">
@@ -107,13 +110,20 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-4">
+      <SidebarFooter className="p-4 space-y-2">
         {!collapsed && (
-          <div className="text-xs text-muted-foreground">
+          <div className="text-xs text-muted-foreground truncate">
             <Settings className="inline w-3 h-3 mr-1" />
             {ROLE_LABELS[role]}
           </div>
         )}
+        <button
+          onClick={signOut}
+          className="flex items-center gap-2 w-full rounded-lg px-2 py-2 text-sm text-muted-foreground hover:text-destructive hover:bg-brand-pink-soft transition-colors"
+        >
+          <LogOut className="w-4 h-4 flex-shrink-0" />
+          {!collapsed && <span>Cerrar sesión</span>}
+        </button>
       </SidebarFooter>
     </Sidebar>
   );
