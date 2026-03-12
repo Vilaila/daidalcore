@@ -60,11 +60,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        pastel: {
-          yellow: "hsl(var(--pastel-yellow))",
-          green: "hsl(var(--pastel-green))",
-          red: "hsl(var(--pastel-red))",
-          orange: "hsl(var(--pastel-orange))",
+        brand: {
+          teal: "hsl(var(--brand-teal))",
+          yellow: "hsl(var(--brand-yellow))",
+          pink: "hsl(var(--brand-pink))",
+          "teal-soft": "hsl(var(--brand-teal-soft))",
+          "yellow-soft": "hsl(var(--brand-yellow-soft))",
+          "pink-soft": "hsl(var(--brand-pink-soft))",
         },
       },
       borderRadius: {
