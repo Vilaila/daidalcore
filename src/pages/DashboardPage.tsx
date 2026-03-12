@@ -13,7 +13,7 @@ export default function DashboardPage() {
   const dineroDisponible = eventosEconomicos.reduce((s, e) => s + e.presupuestoDisponible, 0);
   const dineroEventos = eventosEconomicos.filter(e => e.estado === "En progreso").reduce((s, e) => s + e.presupuestoDisponible, 0);
   const totalPedidos = pedidos.length;
-  const pedidosEstancados = pedidos.filter(p => p.estado === "Proforma");
+  const pedidosEstancados = pedidos.filter(p => p.estadoPedido === "Proforma");
   const presupuestosAlta = presupuestos.filter(p => p.prioridad === "Alta" && p.estado === "Pendiente");
 
   // Data by section
