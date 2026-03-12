@@ -38,9 +38,7 @@ function ProtectedRoutes() {
     return <Navigate to="/login" replace />;
   }
 
-  // Check MFA — if AAL1 but factors exist, require verification
-  const aal = session.user?.factors?.length ? "aal2" : "aal1";
-  const currentAal = session.user?.aal;
+  // Session is active — render protected content
 
   return (
     <RoleProvider>
