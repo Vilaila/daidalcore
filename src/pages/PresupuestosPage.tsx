@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { presupuestos, eventosEconomicos } from "@/data/mockData";
 import { useRole } from "@/contexts/RoleContext";
-import { Download, Upload, AlertTriangle, ExternalLink } from "lucide-react";
+import { Download, Upload, AlertTriangle, ExternalLink, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function PresupuestosPage() {
@@ -54,6 +54,7 @@ export default function PresupuestosPage() {
               <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Estado</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden xl:table-cell">Evento Económico</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden xl:table-cell">Fecha</th>
+              {writable && <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Acciones</th>}
             </tr>
           </thead>
           <tbody>
@@ -91,6 +92,18 @@ export default function PresupuestosPage() {
                 </td>
                 <td className="px-4 py-3 text-muted-foreground hidden xl:table-cell text-xs">{getEventoNombre(p.eventoEconomico)}</td>
                 <td className="px-4 py-3 text-muted-foreground hidden xl:table-cell text-xs">{p.fecha}</td>
+                {writable && (
+                  <td className="px-4 py-3 text-center">
+                    <div className="flex items-center justify-center gap-1">
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-primary">
+                        <Pencil className="w-3.5 h-3.5" />
+                      </Button>
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-destructive">
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </Button>
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

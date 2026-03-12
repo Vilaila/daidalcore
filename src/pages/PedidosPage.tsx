@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { pedidos, presupuestos, eventosEconomicos } from "@/data/mockData";
 import { useRole } from "@/contexts/RoleContext";
 import { Button } from "@/components/ui/button";
-import { FileText, Clock, ExternalLink, Package } from "lucide-react";
+import { FileText, Clock, ExternalLink, Package, Pencil, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 const STEPS = ["Pendiente de correo", "Proforma", "Solicitud empezada", "Factura", "Terminado"];
@@ -119,6 +119,7 @@ export default function PedidosPage() {
               <th className="text-center px-4 py-3 font-semibold text-muted-foreground hidden lg:table-cell">Factura</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden xl:table-cell">Fecha</th>
               <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Detalle</th>
+              {writable && <th className="text-center px-4 py-3 font-semibold text-muted-foreground">Acciones</th>}
             </tr>
           </thead>
           <tbody>
@@ -163,6 +164,18 @@ export default function PedidosPage() {
                 <td className="px-4 py-3 text-center">
                   <Button variant="ghost" size="sm" onClick={() => setSelected(p.id)}>Ver</Button>
                 </td>
+                {writable && (
+                  <td className="px-4 py-3 text-center">
+                    <div className="flex items-center justify-center gap-1">
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-primary">
+                        <Pencil className="w-3.5 h-3.5" />
+                      </Button>
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-destructive">
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </Button>
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

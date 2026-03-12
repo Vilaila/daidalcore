@@ -5,7 +5,7 @@ import type { RolMiembro } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-  Search, Phone, Mail, Calendar, ChevronDown, ChevronUp, User, Shield, GraduationCap, IdCard
+  Search, Phone, Mail, Calendar, ChevronDown, ChevronUp, User, Shield, GraduationCap, IdCard, Pencil, Trash2
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useRole } from "@/contexts/RoleContext";
@@ -166,6 +166,16 @@ export default function MiembrosPage() {
                           <FieldItem icon={Calendar} label="Fecha salida" value={m.fechaSalida || "—"} />
                         </div>
                       </div>
+                        {writable && (
+                          <div className="flex justify-end gap-2 pt-4">
+                            <Button variant="outline" size="sm">
+                              <Pencil className="w-3 h-3 mr-1" />Editar
+                            </Button>
+                            <Button variant="outline" size="sm" className="text-destructive hover:text-destructive hover:bg-destructive/10">
+                              <Trash2 className="w-3 h-3 mr-1" />Eliminar
+                            </Button>
+                          </div>
+                        )}
                     </motion.div>
                   )}
                 </AnimatePresence>

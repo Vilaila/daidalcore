@@ -4,7 +4,7 @@ import { eventosEconomicos, EventoEconomico } from "@/data/mockData";
 import { useRole } from "@/contexts/RoleContext";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Edit2, ChevronDown, ChevronUp } from "lucide-react";
+import { Edit2, ChevronDown, ChevronUp, Trash2 } from "lucide-react";
 
 type FilterType = "todos" | "en_progreso" | "sin_comenzar" | "terminados";
 
@@ -97,9 +97,12 @@ export default function EventosPage() {
                     </div>
                   </div>
                   {writable && (
-                    <div className="flex justify-end pt-2">
+                    <div className="flex justify-end gap-2 pt-2">
                       <Button variant="outline" size="sm">
                         <Edit2 className="w-3 h-3 mr-1" />Editar
+                      </Button>
+                      <Button variant="outline" size="sm" className="text-destructive hover:text-destructive hover:bg-destructive/10">
+                        <Trash2 className="w-3 h-3 mr-1" />Eliminar
                       </Button>
                     </div>
                   )}

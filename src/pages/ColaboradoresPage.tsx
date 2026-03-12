@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { colaboradores } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
 import {
-  Mail, Phone, FileText, ExternalLink, Calendar, ChevronDown, ChevronUp, Handshake
+  Mail, Phone, FileText, ExternalLink, Calendar, ChevronDown, ChevronUp, Handshake, Pencil, Trash2
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useRole } from "@/contexts/RoleContext";
@@ -116,6 +116,16 @@ export default function ColaboradoresPage() {
                             )}
                           </div>
                         </div>
+                        {writable && (
+                          <div className="flex justify-end gap-2 pt-4">
+                            <Button variant="outline" size="sm">
+                              <Pencil className="w-3 h-3 mr-1" />Editar
+                            </Button>
+                            <Button variant="outline" size="sm" className="text-destructive hover:text-destructive hover:bg-destructive/10">
+                              <Trash2 className="w-3 h-3 mr-1" />Eliminar
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </motion.div>
                   )}
