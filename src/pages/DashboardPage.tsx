@@ -477,19 +477,19 @@ export default function DashboardPage() {
               <h3 className="text-sm font-semibold text-foreground">Gasto mensual</h3>
             </div>
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={gastoMensual}>
+              <LineChart data={gastoMensual}>
                 <defs>
-                  <linearGradient id="gradBar" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor={TEAL} stopOpacity={0.9} />
-                    <stop offset="100%" stopColor={TEAL} stopOpacity={0.4} />
+                  <linearGradient id="gradLine" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor={TEAL} stopOpacity={0.25} />
+                    <stop offset="100%" stopColor={TEAL} stopOpacity={0.02} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(220,15%,92%)" />
                 <XAxis dataKey="mes" tick={{ fontSize: 11 }} stroke="hsl(220,10%,75%)" />
                 <YAxis tick={{ fontSize: 11 }} stroke="hsl(220,10%,75%)" />
                 <Tooltip formatter={(v: number) => [`${v.toFixed(2)} €`, "Gasto"]} contentStyle={{ borderRadius: 8, border: "1px solid hsl(220,15%,90%)", fontSize: 12 }} />
-                <Bar dataKey="gasto" fill="url(#gradBar)" radius={[6, 6, 0, 0]} />
-              </BarChart>
+                <Line type="monotone" dataKey="gasto" stroke={TEAL} strokeWidth={2.5} dot={{ fill: TEAL, r: 4 }} activeDot={{ r: 6, fill: TEAL }} />
+              </LineChart>
             </ResponsiveContainer>
           </motion.div>
 
