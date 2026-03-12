@@ -85,9 +85,9 @@ export default function PedidosPage() {
                 </td>
                 <td className="px-4 py-3 text-center">
                   <div className="flex justify-center gap-1">
-                    <FileText className="w-4 h-4 text-muted-foreground" title="Proforma" />
-                    <FileText className="w-4 h-4 text-muted-foreground" title="GEA" />
-                    <FileText className="w-4 h-4 text-muted-foreground" title="Factura" />
+                    <span title="Proforma"><FileText className="w-4 h-4 text-muted-foreground" /></span>
+                    <span title="GEA"><FileText className="w-4 h-4 text-muted-foreground" /></span>
+                    <span title="Factura"><FileText className="w-4 h-4 text-muted-foreground" /></span>
                   </div>
                 </td>
                 <td className="px-4 py-3 text-center">
