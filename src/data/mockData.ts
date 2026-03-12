@@ -11,11 +11,14 @@ export interface Presupuesto {
   prioridad: "Alta" | "Media" | "Baja";
   estado: "Pendiente" | "Aprobado" | "Rechazado";
   eventoEconomico: string;
+  fecha: string;
 }
 
 export interface EventoEconomico {
   id: string;
   nombre: string;
+  descripcion: string;
+  observaciones: string;
   colaborador: string;
   fechaInicio: string;
   fechaFin: string;
@@ -29,21 +32,30 @@ export interface Pedido {
   tipoCompra: "GEA" | "Adelantado" | "A terceros";
   precioTotal: number;
   presupuestosIds: string[];
+  eventosEconomicos: string[];
   proformaPdf: string;
   geaPdf: string;
   facturaPdf: string;
-  estado: "Pendiente de correo" | "Proforma" | "Solicitud empezada" | "Factura" | "Terminado";
+  estadoPedido: "Pendiente de correo" | "Proforma" | "Solicitud empezada" | "Factura" | "Terminado";
+  estadoEnvio: "Pendiente" | "Enviado" | "En tránsito" | "Recibido";
+  fechaRealizacion: string;
+  observaciones: string;
 }
 
 export interface ArticuloInventario {
   id: string;
   nombre: string;
+  descripcion: string;
   unidades: number;
   ubicacion: string;
   responsable: string;
   estado: "Nuevo" | "Funciona" | "Averiado" | "Roto";
   foto: string;
   presupuestoId: string;
+  seccion: "E-Software" | "E-Hardware" | "Diseño" | "RRPP-Marketing" | "RRPP-Corporativa";
+  enlaceWeb: string;
+  observaciones: string;
+  fecha: string;
 }
 
 export interface Empresa {
@@ -75,31 +87,31 @@ export interface Miembro {
 }
 
 export const presupuestos: Presupuesto[] = [
-  { id: "p1", nombre: "Filamento PLA", descripcion: "Bobinas PLA para impresión 3D", seccion: "Fabricación", empresa: "PrintMat SL", referencia: "REF-001", enlace: "https://printmat.es/pla", unidades: 20, precioUnitario: 18.5, prioridad: "Alta", estado: "Aprobado", eventoEconomico: "e1" },
-  { id: "p2", nombre: "Sensores EMG", descripcion: "Sensores electromiográficos", seccion: "Electrónica", empresa: "SensorTech", referencia: "REF-002", enlace: "https://sensortech.com/emg", unidades: 5, precioUnitario: 45.0, prioridad: "Alta", estado: "Pendiente", eventoEconomico: "e1" },
-  { id: "p3", nombre: "Servomotores MG996R", descripcion: "Servos para articulaciones", seccion: "Mecánica", empresa: "RoboComponents", referencia: "REF-003", enlace: "https://robocomp.com/servo", unidades: 12, precioUnitario: 8.75, prioridad: "Media", estado: "Aprobado", eventoEconomico: "e2" },
-  { id: "p4", nombre: "Placas Arduino Nano", descripcion: "Microcontroladores", seccion: "Electrónica", empresa: "ElectroParts", referencia: "REF-004", enlace: "https://electroparts.es", unidades: 8, precioUnitario: 12.0, prioridad: "Baja", estado: "Pendiente", eventoEconomico: "e2" },
-  { id: "p5", nombre: "Tornillería M3", descripcion: "Kit tornillos acero inox", seccion: "Mecánica", empresa: "FixAll", referencia: "REF-005", enlace: "", unidades: 100, precioUnitario: 0.15, prioridad: "Baja", estado: "Aprobado", eventoEconomico: "e1" },
-  { id: "p6", nombre: "TPU Flexible", descripcion: "Filamento flexible para carcasas", seccion: "Fabricación", empresa: "PrintMat SL", referencia: "REF-006", enlace: "https://printmat.es/tpu", unidades: 10, precioUnitario: 25.0, prioridad: "Media", estado: "Rechazado", eventoEconomico: "e3" },
+  { id: "p1", nombre: "Filamento PLA", descripcion: "Bobinas PLA para impresión 3D", seccion: "Fabricación", empresa: "PrintMat SL", referencia: "REF-001", enlace: "https://printmat.es/pla", unidades: 20, precioUnitario: 18.5, prioridad: "Alta", estado: "Aprobado", eventoEconomico: "e1", fecha: "2025-01-20" },
+  { id: "p2", nombre: "Sensores EMG", descripcion: "Sensores electromiográficos", seccion: "Electrónica", empresa: "SensorTech", referencia: "REF-002", enlace: "https://sensortech.com/emg", unidades: 5, precioUnitario: 45.0, prioridad: "Alta", estado: "Pendiente", eventoEconomico: "e1", fecha: "2025-02-10" },
+  { id: "p3", nombre: "Servomotores MG996R", descripcion: "Servos para articulaciones", seccion: "Mecánica", empresa: "RoboComponents", referencia: "REF-003", enlace: "https://robocomp.com/servo", unidades: 12, precioUnitario: 8.75, prioridad: "Media", estado: "Aprobado", eventoEconomico: "e2", fecha: "2025-03-05" },
+  { id: "p4", nombre: "Placas Arduino Nano", descripcion: "Microcontroladores", seccion: "Electrónica", empresa: "ElectroParts", referencia: "REF-004", enlace: "https://electroparts.es", unidades: 8, precioUnitario: 12.0, prioridad: "Baja", estado: "Pendiente", eventoEconomico: "e2", fecha: "2025-03-12" },
+  { id: "p5", nombre: "Tornillería M3", descripcion: "Kit tornillos acero inox", seccion: "Mecánica", empresa: "FixAll", referencia: "REF-005", enlace: "", unidades: 100, precioUnitario: 0.15, prioridad: "Baja", estado: "Aprobado", eventoEconomico: "e1", fecha: "2025-01-25" },
+  { id: "p6", nombre: "TPU Flexible", descripcion: "Filamento flexible para carcasas", seccion: "Fabricación", empresa: "PrintMat SL", referencia: "REF-006", enlace: "https://printmat.es/tpu", unidades: 10, precioUnitario: 25.0, prioridad: "Media", estado: "Rechazado", eventoEconomico: "e3", fecha: "2025-04-01" },
 ];
 
 export const eventosEconomicos: EventoEconomico[] = [
-  { id: "e1", nombre: "Subvención GE 2025", colaborador: "UPV", fechaInicio: "2025-01-15", fechaFin: "2025-12-31", estado: "En progreso", presupuestoDisponible: 3500 },
-  { id: "e2", nombre: "Patrocinio TechCorp", colaborador: "TechCorp Industries", fechaInicio: "2025-03-01", fechaFin: "2025-09-30", estado: "En progreso", presupuestoDisponible: 1200 },
-  { id: "e3", nombre: "Feria Maker 2025", colaborador: "Ayuntamiento Valencia", fechaInicio: "2025-06-01", fechaFin: "2025-06-15", estado: "Sin comenzar", presupuestoDisponible: 800 },
+  { id: "e1", nombre: "Subvención GE 2025", descripcion: "Subvención anual del Generitat para proyectos de robótica universitaria", observaciones: "Requiere justificación de gastos trimestral. No se permiten compras de material fungible por encima de 500€ sin aprobación previa.", colaborador: "UPV", fechaInicio: "2025-01-15", fechaFin: "2025-12-31", estado: "En progreso", presupuestoDisponible: 3500 },
+  { id: "e2", nombre: "Patrocinio TechCorp", descripcion: "Acuerdo de patrocinio con TechCorp Industries para el curso 2025", observaciones: "Logo obligatorio en camisetas y cartel del stand. Entrega de informe final en septiembre.", colaborador: "TechCorp Industries", fechaInicio: "2025-03-01", fechaFin: "2025-09-30", estado: "En progreso", presupuestoDisponible: 1200 },
+  { id: "e3", nombre: "Feria Maker 2025", descripcion: "Participación en la Feria Maker Valencia con stand y talleres", observaciones: "Reservar stand antes del 15 de mayo. Llevar material de demostración funcional.", colaborador: "Ayuntamiento Valencia", fechaInicio: "2025-06-01", fechaFin: "2025-06-15", estado: "Sin comenzar", presupuestoDisponible: 800 },
 ];
 
 export const pedidos: Pedido[] = [
-  { id: "o1", empresa: "PrintMat SL", tipoCompra: "GEA", precioTotal: 370, presupuestosIds: ["p1"], proformaPdf: "", geaPdf: "", facturaPdf: "", estado: "Solicitud empezada" },
-  { id: "o2", empresa: "SensorTech", tipoCompra: "Adelantado", precioTotal: 225, presupuestosIds: ["p2"], proformaPdf: "", geaPdf: "", facturaPdf: "", estado: "Proforma" },
-  { id: "o3", empresa: "RoboComponents", tipoCompra: "A terceros", precioTotal: 105, presupuestosIds: ["p3"], proformaPdf: "", geaPdf: "", facturaPdf: "", estado: "Terminado" },
+  { id: "o1", empresa: "PrintMat SL", tipoCompra: "GEA", precioTotal: 370, presupuestosIds: ["p1"], eventosEconomicos: ["e1"], proformaPdf: "", geaPdf: "", facturaPdf: "", estadoPedido: "Solicitud empezada", estadoEnvio: "Pendiente", fechaRealizacion: "2025-02-01", observaciones: "Confirmar dirección de envío con secretaría" },
+  { id: "o2", empresa: "SensorTech", tipoCompra: "Adelantado", precioTotal: 225, presupuestosIds: ["p2"], eventosEconomicos: ["e1"], proformaPdf: "https://drive.google.com/proforma-o2", geaPdf: "", facturaPdf: "", estadoPedido: "Proforma", estadoEnvio: "Pendiente", fechaRealizacion: "2025-02-15", observaciones: "Pedido urgente, priorizar envío express" },
+  { id: "o3", empresa: "RoboComponents", tipoCompra: "A terceros", precioTotal: 105, presupuestosIds: ["p3"], eventosEconomicos: ["e2"], proformaPdf: "https://drive.google.com/proforma-o3", geaPdf: "https://drive.google.com/gea-o3", facturaPdf: "https://drive.google.com/factura-o3", estadoPedido: "Terminado", estadoEnvio: "Recibido", fechaRealizacion: "2025-03-10", observaciones: "" },
 ];
 
 export const inventario: ArticuloInventario[] = [
-  { id: "i1", nombre: "Bobina PLA Blanco", unidades: 15, ubicacion: "Armario 1 / Cajón 2", responsable: "Ana García", estado: "Nuevo", foto: "", presupuestoId: "p1" },
-  { id: "i2", nombre: "Sensor EMG v2", unidades: 3, ubicacion: "Armario 2 / Cajón 1", responsable: "Carlos López", estado: "Funciona", foto: "", presupuestoId: "p2" },
-  { id: "i3", nombre: "Servo MG996R", unidades: 10, ubicacion: "Armario 1 / Cajón 4", responsable: "María Ruiz", estado: "Funciona", foto: "", presupuestoId: "p3" },
-  { id: "i4", nombre: "Arduino Nano Clone", unidades: 2, ubicacion: "Armario 2 / Cajón 3", responsable: "Pedro Sánchez", estado: "Averiado", foto: "", presupuestoId: "p4" },
+  { id: "i1", nombre: "Bobina PLA Blanco", descripcion: "Filamento PLA 1.75mm blanco para impresora 3D Ender 3", unidades: 15, ubicacion: "Armario 1 / Cajón 2", responsable: "Ana García", estado: "Nuevo", foto: "", presupuestoId: "p1", seccion: "E-Hardware", enlaceWeb: "https://daidalonic.com/inventario/pla-blanco", observaciones: "Almacenar en lugar seco", fecha: "2025-02-05" },
+  { id: "i2", nombre: "Sensor EMG v2", descripcion: "Sensor electromiográfico de superficie para lectura muscular", unidades: 3, ubicacion: "Armario 2 / Cajón 1", responsable: "Carlos López", estado: "Funciona", foto: "", presupuestoId: "p2", seccion: "E-Hardware", enlaceWeb: "", observaciones: "Calibrar antes de cada uso", fecha: "2025-02-20" },
+  { id: "i3", nombre: "Servo MG996R", descripcion: "Servomotor de alto torque para articulaciones robóticas", unidades: 10, ubicacion: "Armario 1 / Cajón 4", responsable: "María Ruiz", estado: "Funciona", foto: "", presupuestoId: "p3", seccion: "E-Hardware", enlaceWeb: "https://daidalonic.com/inventario/servo-mg996r", observaciones: "", fecha: "2025-03-15" },
+  { id: "i4", nombre: "Arduino Nano Clone", descripcion: "Placa microcontroladora compatible con Arduino Nano v3", unidades: 2, ubicacion: "Armario 2 / Cajón 3", responsable: "Pedro Sánchez", estado: "Averiado", foto: "", presupuestoId: "p4", seccion: "E-Software", enlaceWeb: "", observaciones: "Puerto USB dañado en una unidad", fecha: "2025-03-20" },
 ];
 
 export const empresas: Empresa[] = [
