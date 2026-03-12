@@ -15,8 +15,8 @@ export default function PresupuestosPage() {
   };
 
   const estadoColor = (e: string) => {
-    if (e === "Aprobado") return "bg-pastel-green text-secondary-foreground";
-    if (e === "Rechazado") return "bg-pastel-red text-accent-foreground";
+    if (e === "Aprobado") return "bg-brand-teal-soft text-[hsl(166,40%,25%)]";
+    if (e === "Rechazado") return "bg-brand-pink-soft text-[hsl(345,70%,30%)]";
     return "bg-muted text-muted-foreground";
   };
 

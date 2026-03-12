@@ -51,8 +51,8 @@ export default function PedidosPage() {
     ids.map(id => eventosEconomicos.find(e => e.id === id)?.nombre).filter(Boolean).join(", ") || "—";
 
   const envioColor = (e: string) => {
-    if (e === "Recibido") return "bg-pastel-green text-secondary-foreground";
-    if (e === "En tránsito" || e === "Enviado") return "bg-pastel-yellow";
+    if (e === "Recibido") return "bg-brand-teal-soft text-[hsl(166,40%,25%)]";
+    if (e === "En tránsito" || e === "Enviado") return "bg-brand-yellow-soft text-[hsl(35,80%,25%)]";
     return "bg-muted text-muted-foreground";
   };
 
@@ -68,7 +68,7 @@ export default function PedidosPage() {
 
       {/* Alerta pedidos estancados */}
       {pedidos.filter(p => p.estadoPedido === "Proforma").map(p => (
-        <div key={p.id} className="flex items-center gap-3 bg-pastel-yellow rounded-lg px-4 py-3 text-sm">
+        <div key={p.id} className="flex items-center gap-3 bg-brand-yellow-soft rounded-lg px-4 py-3 text-sm">
           <Clock className="w-4 h-4 flex-shrink-0" style={{ color: "hsl(35, 95%, 45%)" }} />
           <span><strong>Alerta:</strong> Pedido a "{p.empresa}" estancado en Proforma</span>
         </div>
@@ -130,8 +130,8 @@ export default function PedidosPage() {
                 <td className="px-4 py-3 text-right font-semibold text-foreground">{p.precioTotal.toFixed(2)} €</td>
                 <td className="px-4 py-3 text-center">
                   <span className={`status-badge ${
-                    p.estadoPedido === "Terminado" ? "bg-pastel-green text-secondary-foreground" :
-                    p.estadoPedido === "Proforma" ? "bg-pastel-yellow" :
+                    p.estadoPedido === "Terminado" ? "bg-brand-teal-soft text-[hsl(166,40%,25%)]" :
+                    p.estadoPedido === "Proforma" ? "bg-brand-yellow-soft text-[hsl(35,80%,25%)]" :
                     "bg-muted text-muted-foreground"
                   }`}>{p.estadoPedido}</span>
                 </td>

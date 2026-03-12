@@ -77,7 +77,7 @@ export function AppSidebar() {
               {mainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} end={item.url === "/"} className="hover:bg-muted/50" activeClassName="bg-pastel-yellow text-foreground font-semibold">
+                    <NavLink to={item.url} end={item.url === "/"} className="hover:bg-muted/50" activeClassName="bg-brand-yellow-soft text-foreground font-semibold">
                       <item.icon className="mr-2 h-4 w-4" />
                       {!collapsed && <span>{item.title}</span>}
                     </NavLink>
@@ -95,7 +95,7 @@ export function AppSidebar() {
               {configItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} className="hover:bg-muted/50" activeClassName="bg-pastel-yellow text-foreground font-semibold">
+                    <NavLink to={item.url} className="hover:bg-muted/50" activeClassName="bg-brand-yellow-soft text-foreground font-semibold">
                       <item.icon className="mr-2 h-4 w-4" />
                       {!collapsed && <span>{item.title}</span>}
                     </NavLink>
