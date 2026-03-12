@@ -5,7 +5,7 @@ import type { RolMiembro } from "@/data/mockData";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-  Search, Phone, Mail, Calendar, ChevronDown, ChevronUp, User, Shield, GraduationCap, IdCard
+  Search, Phone, Mail, Calendar, ChevronDown, ChevronUp, User, Shield, GraduationCap, IdCard, Pencil, Trash2
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useRole } from "@/contexts/RoleContext";
