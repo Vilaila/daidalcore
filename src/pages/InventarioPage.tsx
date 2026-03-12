@@ -4,7 +4,7 @@ import { inventario } from "@/data/mockData";
 import { useRole } from "@/contexts/RoleContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Camera, ChevronDown, ChevronUp, ExternalLink, Search } from "lucide-react";
+import { Camera, ChevronDown, ChevronUp, ExternalLink, Search, Pencil, Trash2 } from "lucide-react";
 
 export default function InventarioPage() {
   const { canWrite } = useRole();
